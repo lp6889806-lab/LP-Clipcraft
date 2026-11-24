@@ -15,8 +15,8 @@ class PhoneGate(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.tmp = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)
-        os.environ['NEONCLIPPING_DATA_DIR'] = cls.tmp.name
-        os.environ['NEONCLIPPING_LAN'] = '1'
+        os.environ['LP_CLIPCRAFT_DATA_DIR'] = cls.tmp.name
+        os.environ['LP_CLIPCRAFT_LAN'] = '1'
         import importlib
         import app as A
         importlib.reload(A)
@@ -27,8 +27,8 @@ class PhoneGate(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        os.environ.pop('NEONCLIPPING_LAN', None)
-        os.environ.pop('NEONCLIPPING_DATA_DIR', None)
+        os.environ.pop('LP_CLIPCRAFT_LAN', None)
+        os.environ.pop('LP_CLIPCRAFT_DATA_DIR', None)
         cls.tmp.cleanup()
 
     def pin(self):
@@ -96,9 +96,9 @@ class PhoneGate(unittest.TestCase):
 
 class PhoneOff(unittest.TestCase):
     def test_everything_is_closed_for_other_machines_when_lan_mode_is_off(self):
-        os.environ.pop('NEONCLIPPING_LAN', None)
+        os.environ.pop('LP_CLIPCRAFT_LAN', None)
         with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as d:
-            os.environ['NEONCLIPPING_DATA_DIR'] = d
+            os.environ['LP_CLIPCRAFT_DATA_DIR'] = d
             import importlib
             import app as A
             importlib.reload(A)
@@ -107,7 +107,7 @@ class PhoneOff(unittest.TestCase):
             for p in ('/m', '/library', '/live-active'):
                 self.assertEqual(phone.get(p).status_code, 403, p)
             self.assertFalse(TestClient(A.app, client=('127.0.0.1', 1)).get('/phone/status').json()['enabled'])
-            os.environ.pop('NEONCLIPPING_DATA_DIR', None)
+            os.environ.pop('LP_CLIPCRAFT_DATA_DIR', None)
 
 
 class Helpers(unittest.TestCase):

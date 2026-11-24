@@ -57,7 +57,7 @@ $log = Join-Path $InstallDir 'install.log'
 try { Start-Transcript -Path $log -Append | Out-Null } catch {}
 
 Write-Host ""
-Write-Host "  NEONCLIPPING SETUP" -ForegroundColor Magenta
+Write-Host "  LP_CLIPCRAFT SETUP" -ForegroundColor Magenta
 Write-Host "  Paste a link, get captioned 9:16 clips. Free, local, open-source. By Ajay K Meena"
 Write-Host "  Install folder: $InstallDir"
 
@@ -203,21 +203,21 @@ try {
     $bat = @(
         '@echo off',
         'title LP Clipcraft (band karne ke liye ye window band karo)',
-        'if not defined NEONCLIPPING_PORT set NEONCLIPPING_PORT=8770',
+        'if not defined LP_CLIPCRAFT_PORT set LP_CLIPCRAFT_PORT=8770',
         $pathLine,
-        'powershell -NoProfile -Command "try{Invoke-WebRequest -UseBasicParsing http://127.0.0.1:%NEONCLIPPING_PORT%/healthz -TimeoutSec 2 | Out-Null; exit 0}catch{exit 1}"',
+        'powershell -NoProfile -Command "try{Invoke-WebRequest -UseBasicParsing http://127.0.0.1:%LP_CLIPCRAFT_PORT%/healthz -TimeoutSec 2 | Out-Null; exit 0}catch{exit 1}"',
         'if %errorlevel%==0 (',
-        '  start "" http://127.0.0.1:%NEONCLIPPING_PORT%',
+        '  start "" http://127.0.0.1:%LP_CLIPCRAFT_PORT%',
         '  exit /b 0',
         ')',
         "cd /d `"$app`"",
-        'start "" /min powershell -NoProfile -WindowStyle Hidden -Command "for($i=0;$i -lt 90;$i++){try{Invoke-WebRequest -UseBasicParsing http://127.0.0.1:$env:NEONCLIPPING_PORT/healthz -TimeoutSec 2 | Out-Null; Start-Process http://127.0.0.1:$env:NEONCLIPPING_PORT; break}catch{Start-Sleep 1}}"',
+        'start "" /min powershell -NoProfile -WindowStyle Hidden -Command "for($i=0;$i -lt 90;$i++){try{Invoke-WebRequest -UseBasicParsing http://127.0.0.1:$env:LP_CLIPCRAFT_PORT/healthz -TimeoutSec 2 | Out-Null; Start-Process http://127.0.0.1:$env:LP_CLIPCRAFT_PORT; break}catch{Start-Sleep 1}}"',
         "`"$venvPy`" app.py"
     )
     Set-Content -Path $startBat -Value $bat -Encoding ASCII
     # same start script with the phone remote switched on (listens on the home network, PIN required; see README)
     $phoneBat = Join-Path $InstallDir 'Start-LP Clipcraft-Phone.bat'
-    Set-Content -Path $phoneBat -Value (@($bat[0], $bat[1], 'set NEONCLIPPING_LAN=1') + $bat[2..($bat.Count - 1)]) -Encoding ASCII
+    Set-Content -Path $phoneBat -Value (@($bat[0], $bat[1], 'set LP_CLIPCRAFT_LAN=1') + $bat[2..($bat.Count - 1)]) -Encoding ASCII
     if (-not $NoShortcut) { try {
         $desk = [Environment]::GetFolderPath('Desktop')
         $sh = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path $desk 'LP Clipcraft.lnk'))

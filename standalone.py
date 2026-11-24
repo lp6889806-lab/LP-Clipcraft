@@ -24,7 +24,7 @@ def source_format(h):
     if h>1080:return f'bv*[height<={h}]+ba/b[height<={h}]/b'
     return f'bv*[height<={h}][vcodec^=avc1]+ba[ext=m4a]/bv*[height<={h}]+ba/b[height<={h}]/b'
 def quality_label(h):return '4K' if h>=2160 else f'{h}p'
-LONG_SECONDS=int(__import__('os').environ.get('NEONCLIPPING_LONG_SECONDS','7200'))   # a source longer than 2 h is never downloaded whole: the user picks the part (a 24 h stream is ~46 GB at 1080p)
+LONG_SECONDS=int(__import__('os').environ.get('LP_CLIPCRAFT_LONG_SECONDS','7200'))   # a source longer than 2 h is never downloaded whole: the user picks the part (a 24 h stream is ~46 GB at 1080p)
 MAX_RANGE=7200      # longest part that can be imported at once
 class TooLong(RuntimeError):
     def __init__(self,duration,title=''):

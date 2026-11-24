@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-os.environ['NEONCLIPPING_NO_AUTOUPDATE'] = '1'
+os.environ['LP_CLIPCRAFT_NO_AUTOUPDATE'] = '1'
 import report
 
 _tmp = tempfile.TemporaryDirectory()
@@ -122,7 +122,7 @@ class Send(unittest.TestCase):
         self.url = f'http://127.0.0.1:{self.srv.server_port}/'
 
     def test_not_configured_sends_nothing(self):
-        with mock.patch.dict(os.environ, {'NEONCLIPPING_REPORT_URL': ''}), mock.patch.object(report, 'DEFAULT_REPORT_URL', ''):
+        with mock.patch.dict(os.environ, {'LP_CLIPCRAFT_REPORT_URL': ''}), mock.patch.object(report, 'DEFAULT_REPORT_URL', ''):
             ok, msg = report.send('hi')
         self.assertFalse(ok)
         self.assertIn('not set up', msg)
@@ -130,7 +130,7 @@ class Send(unittest.TestCase):
 
     def test_sends_only_the_shown_text(self):
         report.log_error('Downloading', "Sign in to confirm you're not a bot")
-        with mock.patch.dict(os.environ, {'NEONCLIPPING_REPORT_URL': self.url}):
+        with mock.patch.dict(os.environ, {'LP_CLIPCRAFT_REPORT_URL': self.url}):
             ok, msg = report.send('please help https://youtu.be/ZZZZZZZZZZZ')
         self.assertTrue(ok, msg)
         body = Collector.got[0]
@@ -141,12 +141,12 @@ class Send(unittest.TestCase):
 
     def test_collector_error_is_reported(self):
         Collector.code = 500
-        with mock.patch.dict(os.environ, {'NEONCLIPPING_REPORT_URL': self.url}):
+        with mock.patch.dict(os.environ, {'LP_CLIPCRAFT_REPORT_URL': self.url}):
             ok, _ = report.send('')
         self.assertFalse(ok)
 
     def test_only_https_or_localhost_urls_are_used(self):
-        with mock.patch.dict(os.environ, {'NEONCLIPPING_REPORT_URL': 'http://example.com/x'}), mock.patch.object(report, 'DEFAULT_REPORT_URL', ''):
+        with mock.patch.dict(os.environ, {'LP_CLIPCRAFT_REPORT_URL': 'http://example.com/x'}), mock.patch.object(report, 'DEFAULT_REPORT_URL', ''):
             self.assertEqual(report.report_url(), '')
 
 

@@ -81,7 +81,7 @@ def attach(app, data, root):
         return True
 
     def port_of(request):
-        return os.environ.get('NEONCLIPPING_PORT') or str(request.url.port or 8770)
+        return os.environ.get('LP_CLIPCRAFT_PORT') or str(request.url.port or 8770)
 
     @app.middleware('http')
     async def gate(request: Request, call_next):

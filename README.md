@@ -31,7 +31,7 @@ LP Clipcraft turns long YouTube / Twitch / Kick videos (or your own MP4) into ve
 ![UI](docs/lp-clipcraft-ui.jpg)
 
 📘 **Guides (Hindi + English, PDF):** [docs/LP Clipcraft-Guide-EN-HI.pdf](docs/LP Clipcraft-Guide-EN-HI.pdf)  
-🤖 **Let an AI agent install it for you:** copy [docs/NEONCLIPPING-AGENT-SETUP-PROMPT.txt](docs/NEONCLIPPING-AGENT-SETUP-PROMPT.txt) into Claude Code, Codex CLI or Cursor.
+🤖 **Let an AI agent install it for you:** copy [docs/LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt](docs/LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt) into Claude Code, Codex CLI or Cursor.
 
 ## How it finds good moments
 
@@ -130,11 +130,11 @@ Optional GPU speech model support (only used when a video has no YouTube caption
 .venv/bin/pip install nvidia-cublas-cu12 "nvidia-cudnn-cu12==9.*"
 ```
 
-Set `NEONCLIPPING_CPU=1` to force CPU. Set `NEONCLIPPING_PORT=9000` to use another port.
+Set `LP_CLIPCRAFT_CPU=1` to force CPU. Set `LP_CLIPCRAFT_PORT=9000` to use another port.
 
-**Mac / Linux / no NVIDIA GPU:** the video encoder is chosen by what works on your computer: NVIDIA NVENC, then Apple VideoToolbox, then the CPU encoder (x264). Force one with `NEONCLIPPING_ENCODER=nvenc|videotoolbox|x264`. The speech model skips the GPU attempt when no CUDA GPU exists and runs on the CPU. `install.sh` and the unit tests run automatically on macOS, Ubuntu and Windows machines for every change (see the *Actions* tab); the maintainer has not yet tried the Mac installer on his own Mac, so tell us if it misbehaves (Report a problem).
+**Mac / Linux / no NVIDIA GPU:** the video encoder is chosen by what works on your computer: NVIDIA NVENC, then Apple VideoToolbox, then the CPU encoder (x264). Force one with `LP_CLIPCRAFT_ENCODER=nvenc|videotoolbox|x264`. The speech model skips the GPU attempt when no CUDA GPU exists and runs on the CPU. `install.sh` and the unit tests run automatically on macOS, Ubuntu and Windows machines for every change (see the *Actions* tab); the maintainer has not yet tried the Mac installer on his own Mac, so tell us if it misbehaves (Report a problem).
 
-**Settings (environment variables):** `NEONCLIPPING_LIVE_AUTO_HOURS` (default 3) and `NEONCLIPPING_MIN_FREE_GB` (default 8) control the unattended creator-watch live sessions; a manual Live clipping session has no time cap and no disk guard.
+**Settings (environment variables):** `LP_CLIPCRAFT_LIVE_AUTO_HOURS` (default 3) and `LP_CLIPCRAFT_MIN_FREE_GB` (default 8) control the unattended creator-watch live sessions; a manual Live clipping session has no time cap and no disk guard.
 
 ## How it is built
 
@@ -184,7 +184,7 @@ Inspired by a mobile live-clipper shown in a creator's reel (that app is unrelea
 - **Clip length presets** 10 s / 20 s / 30 s / Auto: the clip starts a few seconds before the chat peak; "Clip now" cuts the same length from the live recording.
 - **Hook text** for live clips from the AI, the **stream title** (emoji removed) or your own text; **captions switch** (off = faster clips).
 - Live clips now also get the style options (template, logo, credit, outro, music, caption animation).
-- **Phone remote:** start LP Clipcraft with the *LP Clipcraft (phone access)* shortcut (`Start-LP Clipcraft-Phone.bat`, or set `NEONCLIPPING_LAN=1`). Under Live clipping it shows a Wi-Fi address and a 6-digit PIN. On a phone on the same Wi-Fi open that address (`/m`), enter the PIN, paste a YouTube Live or Twitch link, pick a length, watch the hype meter, press **Clip now**, and play / save / share the clips. On Android Chrome use "Add to Home screen" to get an app icon. The PC does all the work; the phone is only a remote.
+- **Phone remote:** start LP Clipcraft with the *LP Clipcraft (phone access)* shortcut (`Start-LP Clipcraft-Phone.bat`, or set `LP_CLIPCRAFT_LAN=1`). Under Live clipping it shows a Wi-Fi address and a 6-digit PIN. On a phone on the same Wi-Fi open that address (`/m`), enter the PIN, paste a YouTube Live or Twitch link, pick a length, watch the hype meter, press **Clip now**, and play / save / share the clips. On Android Chrome use "Add to Home screen" to get an app icon. The PC does all the work; the phone is only a remote.
 - **Safety:** phone access is off unless you start it that way (the server then listens on 127.0.0.1 only). Everything that is not the PC needs the PIN (after 5 wrong tries an address is locked for 10 minutes; "New PIN" logs every phone out). Even with the PIN a phone can only use the live, library, make, clips, feedback and creators routes: uploads, file tools, the queue and the PIN itself stay PC-only. Windows will ask once whether to allow LP Clipcraft on private networks: choose Allow for home Wi-Fi only.
 - Not included: a native Android app (the phone page is a web page that works like one), live clipping that runs on the phone itself.
 
@@ -241,7 +241,7 @@ If a video only exists at 720p on YouTube (some new uploads and low-quality sour
 
 Some connections get this from YouTube: shared or mobile-data internet, VPNs, office/hostel Wi-Fi, or an old downloader. LP Clipcraft handles it for you in this order, with no setup:
 
-1. **Keeps yt-dlp fresh.** Once a day at start-up it upgrades `yt-dlp[default]` (offline-safe). Turn off with `NEONCLIPPING_NO_AUTOUPDATE=1`.
+1. **Keeps yt-dlp fresh.** Once a day at start-up it upgrades `yt-dlp[default]` (offline-safe). Turn off with `LP_CLIPCRAFT_NO_AUTOUPDATE=1`.
 2. **Retries in other YouTube modes** (TV, Safari, iOS, mobile web clients) instead of failing on the first block.
 3. **Shows one short message** with the fixes below instead of a long English error.
 
@@ -250,8 +250,8 @@ If YouTube still blocks you, pick one:
 | Fix | How |
 |---|---|
 | **Upload the MP4** | Use **Upload video** next to the link box. Always works. |
-| **Use your browser login** | Sign in to YouTube in Chrome (or Edge / Firefox / Brave), then start LP Clipcraft with `NEONCLIPPING_COOKIES_BROWSER=chrome`. PowerShell: `$env:NEONCLIPPING_COOKIES_BROWSER='chrome'; ./run.ps1`. Close the browser first if Windows says the cookie file is locked. |
-| **Use a cookies file** | Export `cookies.txt` from your browser and save it as `data/youtube_cookies.txt` (or point `NEONCLIPPING_COOKIES_FILE` at it). It stays on your computer. |
+| **Use your browser login** | Sign in to YouTube in Chrome (or Edge / Firefox / Brave), then start LP Clipcraft with `LP_CLIPCRAFT_COOKIES_BROWSER=chrome`. PowerShell: `$env:LP_CLIPCRAFT_COOKIES_BROWSER='chrome'; ./run.ps1`. Close the browser first if Windows says the cookie file is locked. |
+| **Use a cookies file** | Export `cookies.txt` from your browser and save it as `data/youtube_cookies.txt` (or point `LP_CLIPCRAFT_COOKIES_FILE` at it). It stays on your computer. |
 | **Change network** | Home Wi-Fi instead of mobile data; turn the VPN off. |
 
 Cookies are only read when you set one of the options above; LP Clipcraft never reads your browser by itself. Use a throw-away Google account if you do not want your main one attached to automated downloads. Python 3.10 is deprecated by yt-dlp: use Python 3.11+ so updates keep arriving. Everything YouTube-related goes through [`ytdl.py`](ytdl.py).
@@ -302,4 +302,4 @@ Pick **Heading look** in step 04: *Impact* (default: big bold text, one accent w
 
 ## Cloud AI (optional)
 
-A slow PC without a GPU can use a cloud model instead of Ollama for scoring moments and writing titles and hooks. Open **Cloud AI (optional)** on the page, pick a provider (Groq, OpenRouter, Gemini, OpenAI or LM Studio), paste your key, press **Test connection**, tick **Use Cloud AI** and Save. Only the *text* of candidate clips is sent to your provider; videos, audio and frames never leave your PC. The key is stored in `data/llm.json` on your computer and is never shown again. Speech-to-text still uses YouTube's captions or the local model. Environment variables `NEONCLIPPING_LLM_BASE_URL`, `NEONCLIPPING_LLM_MODEL` and `NEONCLIPPING_LLM_KEY` also work.
+A slow PC without a GPU can use a cloud model instead of Ollama for scoring moments and writing titles and hooks. Open **Cloud AI (optional)** on the page, pick a provider (Groq, OpenRouter, Gemini, OpenAI or LM Studio), paste your key, press **Test connection**, tick **Use Cloud AI** and Save. Only the *text* of candidate clips is sent to your provider; videos, audio and frames never leave your PC. The key is stored in `data/llm.json` on your computer and is never shown again. Speech-to-text still uses YouTube's captions or the local model. Environment variables `LP_CLIPCRAFT_LLM_BASE_URL`, `LP_CLIPCRAFT_LLM_MODEL` and `LP_CLIPCRAFT_LLM_KEY` also work.

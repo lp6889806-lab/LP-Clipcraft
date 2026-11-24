@@ -85,7 +85,7 @@ def run():
     # release assets
     rel = json.loads(get('https://api.github.com/repos/iamajmeena/lp-clipcraft/releases/latest')[1] or b'{}')
     names = {x['name'] for x in rel.get('assets', [])}
-    for need in ('LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh', 'LP Clipcraft-Guide-EN-HI.pdf', 'NEONCLIPPING-AGENT-SETUP-PROMPT.txt'):
+    for need in ('LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt'):
         R.check(g, f'release asset {need}', lambda need=need: (need in names, sorted(names)))
     code = get('https://github.com/iamajmeena/lp-clipcraft/releases/latest/download/LP-Clipcraft-Setup.bat')[0]
     R.check(g, 'one-click download URL resolves', lambda: (code == 200, code))
@@ -97,7 +97,7 @@ def run():
     pdf = get('https://iamajmeena.github.io/lp-clipcraft/LP Clipcraft-Guide-EN-HI.pdf')
     R.check(g, 'guide PDF is a PDF with pages', lambda: (pdf[1][:4] == b'%PDF' and pdf[1].count(b'/Type /Page') >= 6, len(pdf[1])))
     # agent prompt
-    pr = get('https://iamajmeena.github.io/lp-clipcraft/NEONCLIPPING-AGENT-SETUP-PROMPT.txt')
+    pr = get('https://iamajmeena.github.io/lp-clipcraft/LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt')
     t = pr[1].decode('utf-8', 'ignore')
     R.check(g, 'agent prompt has the 9 steps + simple-Hindi explanation + stop rules', lambda: (
         len(t) > 4000 and 'Hindi' in t and 'Step 9' in t or 'STEP 9' in t, len(t)))

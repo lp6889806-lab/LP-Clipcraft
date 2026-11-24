@@ -23,7 +23,7 @@ SIGMA = 2.5        # spike = mean + SIGMA * stdev ...
 RATIO = 2.5        # ... and at least RATIO x the baseline mean
 MIN_MSGS = 8       # ... and at least this many messages in the bucket
 COOLDOWN = 60      # seconds between two automatic clips
-try:MIN_FREE_GB = float(os.environ.get('NEONCLIPPING_MIN_FREE_GB', '8'))   # an unattended (auto) session stops below this much free disk space
+try:MIN_FREE_GB = float(os.environ.get('LP_CLIPCRAFT_MIN_FREE_GB', '8'))   # an unattended (auto) session stops below this much free disk space
 except ValueError:MIN_FREE_GB = 8.0
 
 

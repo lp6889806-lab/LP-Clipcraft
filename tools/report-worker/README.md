@@ -5,7 +5,7 @@ Option 3 in **Report a problem** ("Send directly") needs a place to receive the 
 1. `cd tools/report-worker`
 2. `npx wrangler kv namespace create REPORTS`, paste the printed id into `wrangler.toml`.
 3. `npx wrangler deploy` and copy the Worker URL (`https://lp-clipcraft-reports.<you>.workers.dev`).
-4. Put that URL in `report.py` as `DEFAULT_REPORT_URL` (so every user gets it), or for testing set `NEONCLIPPING_REPORT_URL`, or write `{"url": "..."}` into `data/report.json`.
+4. Put that URL in `report.py` as `DEFAULT_REPORT_URL` (so every user gets it), or for testing set `LP_CLIPCRAFT_REPORT_URL`, or write `{"url": "..."}` into `data/report.json`.
 5. Read reports: `npx wrangler kv key list --binding REPORTS` then `npx wrangler kv key get --binding REPORTS "<key>"`.
 
 What is stored: the diagnostics text the user saw and ticked a box to send, the date, and error labels. Reports expire after 60 days. The Worker does not store IPs or headers (Cloudflare's own logs still exist on your account).

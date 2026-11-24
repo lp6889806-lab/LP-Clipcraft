@@ -1,5 +1,5 @@
 """Phone remote end to end, over this PC's real Wi-Fi address (so the server sees a non-loopback client, like a phone).
-Starts its own LP Clipcraft on port 8792 with NEONCLIPPING_LAN=1 and its own data folder, tests the gate, then runs live
+Starts its own LP Clipcraft on port 8792 with LP_CLIPCRAFT_LAN=1 and its own data folder, tests the gate, then runs live
 clipping the way the phone page does (needs a Twitch channel that is live; that part is skipped, and says so, when none is)."""
 import http.client
 import json
@@ -53,7 +53,7 @@ def run():
         return
     host = ips[0]
     tmp = tempfile.TemporaryDirectory()
-    env = dict(os.environ, NEONCLIPPING_PORT=str(PORT), NEONCLIPPING_LAN='1', NEONCLIPPING_DATA_DIR=tmp.name, PYTHONIOENCODING='utf-8')
+    env = dict(os.environ, LP_CLIPCRAFT_PORT=str(PORT), LP_CLIPCRAFT_LAN='1', LP_CLIPCRAFT_DATA_DIR=tmp.name, PYTHONIOENCODING='utf-8')
     py = ROOT / '.venv' / 'Scripts' / 'python.exe'
     proc = subprocess.Popen([str(py if py.exists() else sys.executable), 'app.py'], cwd=str(ROOT), env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     try:

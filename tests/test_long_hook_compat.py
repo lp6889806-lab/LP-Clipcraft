@@ -104,11 +104,11 @@ class FadeAndEncoderTests(unittest.TestCase):
 
     def test_encoder_order_lists_amd_and_intel(self):
         import encoders, os
-        os.environ['NEONCLIPPING_ENCODER'] = 'amf'
+        os.environ['LP_CLIPCRAFT_ENCODER'] = 'amf'
         try:
             names = [e[1] for e in encoders.h264()]
         finally:
-            del os.environ['NEONCLIPPING_ENCODER']
+            del os.environ['LP_CLIPCRAFT_ENCODER']
         self.assertEqual(names[-1], 'libx264')       # CPU always last, so a missing GPU never breaks export
 
 

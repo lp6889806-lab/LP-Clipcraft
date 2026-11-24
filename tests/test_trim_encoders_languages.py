@@ -10,7 +10,7 @@ from unittest import mock
 
 from fastapi import FastAPI, HTTPException
 
-os.environ['NEONCLIPPING_NO_AUTOUPDATE'] = '1'
+os.environ['LP_CLIPCRAFT_NO_AUTOUPDATE'] = '1'
 import encoders
 import languages
 from reedit import attach, trim_words
@@ -106,7 +106,7 @@ class SavedClipTrim(unittest.TestCase):
 class Encoders(unittest.TestCase):
     def setUp(self):
         encoders.works.cache_clear()
-        for k in ('NEONCLIPPING_ENCODER',):
+        for k in ('LP_CLIPCRAFT_ENCODER',):
             os.environ.pop(k, None)
 
     def names(self):
@@ -131,7 +131,7 @@ class Encoders(unittest.TestCase):
             self.assertEqual(self.names(), ['h264_qsv', 'libx264'])
 
     def test_override_to_x264(self):
-        with mock.patch.dict(os.environ, {'NEONCLIPPING_ENCODER': 'x264'}), mock.patch.object(encoders, 'works', lambda n: True):
+        with mock.patch.dict(os.environ, {'LP_CLIPCRAFT_ENCODER': 'x264'}), mock.patch.object(encoders, 'works', lambda n: True):
             self.assertEqual(self.names(), ['libx264'])
 
     def test_x264_is_always_last_and_has_quality_args(self):
@@ -140,7 +140,7 @@ class Encoders(unittest.TestCase):
         self.assertEqual(last, ['-c:v', 'libx264', '-crf', '21', '-preset', 'veryfast'])
 
     def test_unknown_encoder_name_in_env_falls_back_to_auto(self):
-        with mock.patch.dict(os.environ, {'NEONCLIPPING_ENCODER': 'banana'}), mock.patch.object(encoders, 'works', lambda n: n == 'libx264'):
+        with mock.patch.dict(os.environ, {'LP_CLIPCRAFT_ENCODER': 'banana'}), mock.patch.object(encoders, 'works', lambda n: n == 'libx264'):
             self.assertEqual(self.names(), ['libx264'])
 
 

@@ -1226,7 +1226,7 @@
  },
  {
   "group": "site",
-  "name": "link https://iamajmeena.github.io/lp-clipcraft/NEONCLIPPING-AGENT-SETUP-PROMPT.txt",
+  "name": "link https://iamajmeena.github.io/lp-clipcraft/LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
@@ -1296,7 +1296,7 @@
  },
  {
   "group": "site",
-  "name": "link https://editorsgurukul.com/lp-clipcraft/NEONCLIPPING-AGENT-SETUP-PROMPT.txt",
+  "name": "link https://editorsgurukul.com/lp-clipcraft/LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
@@ -1375,35 +1375,35 @@
   "group": "site",
   "name": "release asset LP-Clipcraft-Setup.bat",
   "ok": true,
-  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
+  "evidence": "['LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
   "sec": 0.0
  },
  {
   "group": "site",
   "name": "release asset install.ps1",
   "ok": true,
-  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
+  "evidence": "['LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
   "sec": 0.0
  },
  {
   "group": "site",
   "name": "release asset install.sh",
   "ok": true,
-  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
+  "evidence": "['LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
   "sec": 0.0
  },
  {
   "group": "site",
   "name": "release asset LP Clipcraft-Guide-EN-HI.pdf",
   "ok": true,
-  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
+  "evidence": "['LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "release asset NEONCLIPPING-AGENT-SETUP-PROMPT.txt",
+  "name": "release asset LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt",
   "ok": true,
-  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
+  "evidence": "['LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
   "sec": 0.0
  },
  {
@@ -1968,7 +1968,7 @@
  },
  {
   "group": "installer",
-  "name": "installer writes Start-LP Clipcraft-Phone.bat (sets NEONCLIPPING_LAN=1) and a second shortcut; still ASCII and parses",
+  "name": "installer writes Start-LP Clipcraft-Phone.bat (sets LP_CLIPCRAFT_LAN=1) and a second shortcut; still ASCII and parses",
   "ok": true,
   "evidence": "real install into a scratch folder, exit 0",
   "sec": 0

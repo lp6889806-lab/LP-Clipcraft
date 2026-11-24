@@ -7,22 +7,22 @@ What it does
 3. If everything is blocked it raises ONE short, readable message that says what to do (upload the MP4, use your browser login).
 
 Optional cookies (never read unless you ask for them):
-  NEONCLIPPING_COOKIES_BROWSER=chrome|edge|firefox|brave   use the login of that browser on this computer
-  NEONCLIPPING_COOKIES_FILE=path\\to\\cookies.txt          a Netscape cookies.txt exported from your browser
+  LP_CLIPCRAFT_COOKIES_BROWSER=chrome|edge|firefox|brave   use the login of that browser on this computer
+  LP_CLIPCRAFT_COOKIES_FILE=path\\to\\cookies.txt          a Netscape cookies.txt exported from your browser
   data/youtube_cookies.txt                                 same file, picked up automatically if it exists
   data/ytdl.json                                           {"cookies_browser": "chrome"} instead of environment variables
-Set NEONCLIPPING_NO_AUTOUPDATE=1 to turn off the daily yt-dlp update.
+Set LP_CLIPCRAFT_NO_AUTOUPDATE=1 to turn off the daily yt-dlp update.
 """
 from pathlib import Path
 import json, os, subprocess, sys, time
 
 ROOT = Path(__file__).resolve().parent
-DATA = Path(os.environ.get('NEONCLIPPING_DATA_DIR', str(ROOT / 'data')))
+DATA = Path(os.environ.get('LP_CLIPCRAFT_DATA_DIR', str(ROOT / 'data')))
 UPDATE_EVERY = 24 * 3600
 
 def update_ytdlp(force=False):
     """pip-upgrade yt-dlp (with its YouTube helper extras) at most once a day. Silent and offline-safe."""
-    if os.environ.get('NEONCLIPPING_NO_AUTOUPDATE') == '1' and not force:
+    if os.environ.get('LP_CLIPCRAFT_NO_AUTOUPDATE') == '1' and not force:
         return False
     stamp = DATA / '.ytdlp_checked'
     try:
@@ -60,8 +60,8 @@ def _config():
         saved = json.loads((DATA / 'ytdl.json').read_text(encoding='utf-8'))
     except (OSError, ValueError):
         pass
-    browser = (os.environ.get('NEONCLIPPING_COOKIES_BROWSER') or saved.get('cookies_browser') or '').strip().lower()
-    cookie_file = os.environ.get('NEONCLIPPING_COOKIES_FILE') or saved.get('cookies_file') or str(DATA / 'youtube_cookies.txt')
+    browser = (os.environ.get('LP_CLIPCRAFT_COOKIES_BROWSER') or saved.get('cookies_browser') or '').strip().lower()
+    cookie_file = os.environ.get('LP_CLIPCRAFT_COOKIES_FILE') or saved.get('cookies_file') or str(DATA / 'youtube_cookies.txt')
     return browser, cookie_file
 
 def js_runtimes():
@@ -92,7 +92,7 @@ def variants(base):
 
 GUIDE = ("YouTube blocked this download (its bot check). This happens on shared, mobile-data or VPN internet. Fix, easiest first: "
          "1) Click Upload video and upload the MP4 instead (always works). "
-         "2) Sign in to YouTube in Chrome, then set NEONCLIPPING_COOKIES_BROWSER=chrome (Edge or Firefox also work) and restart "
+         "2) Sign in to YouTube in Chrome, then set LP_CLIPCRAFT_COOKIES_BROWSER=chrome (Edge or Firefox also work) and restart "
          "(see README: YouTube bot check). "
          "3) Try another network (home Wi-Fi, VPN off). "
          "The tool already updated its downloader and tried several other YouTube modes.")

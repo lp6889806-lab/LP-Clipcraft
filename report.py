@@ -12,9 +12,9 @@ from pathlib import Path
 import json, os, platform, re, subprocess, sys, time, urllib.parse, urllib.request
 
 ROOT = Path(__file__).resolve().parent
-DATA = Path(os.environ.get('NEONCLIPPING_DATA_DIR', str(ROOT / 'data')))
+DATA = Path(os.environ.get('LP_CLIPCRAFT_DATA_DIR', str(ROOT / 'data')))
 REPO = 'iamajmeena/lp-clipcraft'
-DEFAULT_REPORT_URL = ''            # set after deploying tools/report-worker (or use NEONCLIPPING_REPORT_URL / data/report.json)
+DEFAULT_REPORT_URL = ''            # set after deploying tools/report-worker (or use LP_CLIPCRAFT_REPORT_URL / data/report.json)
 LOG_MAX = 200_000                  # bytes; the log is trimmed to its newest half when it grows past this
 SEND_MAX = 24_000                  # characters sent in a direct report
 ISSUE_BODY_MAX = 5_500             # characters in the pre-filled issue (URLs over ~8k fail)
@@ -122,7 +122,7 @@ def environment():
         info['js_runtime'] = ','.join(_y.js_runtimes()) or 'none (YouTube may hide some qualities)'
     except Exception:
         info['js_runtime'] = 'unknown'
-    info['browser_login_set'] = bool(os.environ.get('NEONCLIPPING_COOKIES_BROWSER') or (DATA / 'youtube_cookies.txt').exists()
+    info['browser_login_set'] = bool(os.environ.get('LP_CLIPCRAFT_COOKIES_BROWSER') or (DATA / 'youtube_cookies.txt').exists()
                                      or (DATA / 'ytdl.json').exists())      # yes/no only, never the cookies
     return info
 
@@ -153,7 +153,7 @@ def issue_url(note='', title=''):
 
 
 def report_url():
-    url = os.environ.get('NEONCLIPPING_REPORT_URL', '')
+    url = os.environ.get('LP_CLIPCRAFT_REPORT_URL', '')
     if not url:
         try:
             url = json.loads((DATA / 'report.json').read_text(encoding='utf-8')).get('url', '')

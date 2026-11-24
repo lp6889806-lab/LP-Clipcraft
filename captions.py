@@ -14,7 +14,7 @@ def _best_hindi():
     """large-v3 is clearly better at Hindi than distilled turbo, but on a 6 GB GPU shared with other apps it measured
     ~6 minutes for a 40 s clip (memory spill). Auto-use it only when 3.4 GB of GPU memory is really free."""
     try:
-        if os.environ.get('NEONCLIPPING_CPU')=='1':return ''
+        if os.environ.get('LP_CLIPCRAFT_CPU')=='1':return ''
         free=int(subprocess.run(['nvidia-smi','--query-gpu=memory.free','--format=csv,noheader,nounits'],capture_output=True,text=True,timeout=5).stdout.split()[0])
         if free>=3400:return large_v3()
     except Exception:pass
@@ -39,7 +39,7 @@ def _load(WhisperModel,spec,data):
     try:                          # no NVIDIA/CUDA here (a Mac, a laptop without a GPU): skip the doomed GPU attempt
         import ctranslate2;has_cuda=ctranslate2.get_cuda_device_count()>0
     except Exception:has_cuda=True   # cannot tell: keep the old behaviour (try the GPU, fall back to CPU)
-    if os.environ.get('NEONCLIPPING_CPU')!='1' and not big and has_cuda:
+    if os.environ.get('LP_CLIPCRAFT_CPU')!='1' and not big and has_cuda:
         try:
             m=WhisperModel(spec,device='cuda',compute_type='int8_float16',download_root=str(data/'models'))
             list(m.transcribe(__import__('numpy').zeros(16000,dtype='float32'))[0])   # prove cuDNN/cuBLAS really load

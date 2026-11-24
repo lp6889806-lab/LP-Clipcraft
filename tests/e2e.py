@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / 'data'
 OUT = Path(__file__).resolve().parent / 'out'
 OUT.mkdir(exist_ok=True)
-BASE = os.environ.get('NEONCLIPPING_URL', 'http://127.0.0.1:8770')
+BASE = os.environ.get('LP_CLIPCRAFT_URL', 'http://127.0.0.1:8770')
 REPORT = Path(__file__).resolve().parent / 'report.json'
 
 
@@ -299,7 +299,7 @@ def g_feedback():
         data=Path(directory)
         with socket.socket() as reservation:
             reservation.bind(('127.0.0.1',0));port=reservation.getsockname()[1]
-        env=dict(os.environ,NEONCLIPPING_DATA_DIR=str(data),NEONCLIPPING_PORT=str(port))
+        env=dict(os.environ,LP_CLIPCRAFT_DATA_DIR=str(data),LP_CLIPCRAFT_PORT=str(port))
         with (data/'server.log').open('w') as log:
             proc=subprocess.Popen([sys.executable,str(ROOT/'app.py')],cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
             try:

@@ -4,8 +4,8 @@
 # Needs: python3 (3.10+), ffmpeg, curl, unzip. It does not install system packages for you: it tells you what is missing.
 # Everything goes into ~/LP Clipcraft. Delete that folder to uninstall.
 set -e
-DIR="${NEONCLIPPING_DIR:-$HOME/LP Clipcraft}"
-ZIP="${NEONCLIPPING_ZIP:-https://github.com/iamajmeena/lp-clipcraft/archive/refs/heads/main.zip}"
+DIR="${LP_CLIPCRAFT_DIR:-$HOME/LP Clipcraft}"
+ZIP="${LP_CLIPCRAFT_ZIP:-https://github.com/iamajmeena/lp-clipcraft/archive/refs/heads/main.zip}"
 say() { printf '\n==> %s\n' "$1"; }
 need() { command -v "$1" >/dev/null 2>&1 || { echo "Missing: $1. $2"; MISSING=1; }; }
 
@@ -50,7 +50,7 @@ say "Step 4/4 - Start script"
 cat > "$DIR/start.sh" <<EOF
 #!/usr/bin/env bash
 cd "$DIR/app"
-PORT="\${NEONCLIPPING_PORT:-8770}"
+PORT="\${LP_CLIPCRAFT_PORT:-8770}"
 (sleep 4; (command -v open >/dev/null && open "http://127.0.0.1:\$PORT") || (command -v xdg-open >/dev/null && xdg-open "http://127.0.0.1:\$PORT") || true) &
 exec .venv/bin/python app.py
 EOF
@@ -61,6 +61,6 @@ echo "SETUP COMPLETE."
 echo "Start LP Clipcraft:  $DIR/start.sh    (then open http://127.0.0.1:8770)"
 echo "Use: 1) paste a video link  2) press 'Make clips'  3) preview and 'Download MP4'."
 echo "Optional: install Ollama (ollama.com) and run 'ollama pull llama3.2:3b' for AI titles."
-[ "${NEONCLIPPING_NO_START:-0}" = "1" ] && exit 0    # used by the automatic check: install only
+[ "${LP_CLIPCRAFT_NO_START:-0}" = "1" ] && exit 0    # used by the automatic check: install only
 echo "Starting now..."
 exec "$DIR/start.sh"

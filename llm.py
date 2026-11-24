@@ -5,7 +5,7 @@ sent to the provider you chose; videos, audio and frames never are. The key is s
 shown again by the page and is never written to the error log.
 
 Settings: data/llm.json  {"enabled": true, "base_url": "https://api.groq.com/openai/v1", "model": "llama-3.3-70b-versatile", "api_key": "..."}
-or the environment variables NEONCLIPPING_LLM_BASE_URL, NEONCLIPPING_LLM_MODEL, NEONCLIPPING_LLM_KEY.
+or the environment variables LP_CLIPCRAFT_LLM_BASE_URL, LP_CLIPCRAFT_LLM_MODEL, LP_CLIPCRAFT_LLM_KEY.
 """
 from pathlib import Path
 from urllib.parse import urlparse
@@ -14,10 +14,10 @@ import json, os, re, time, urllib.error, urllib.request
 PREFIX = 'cloud:'
 OLLAMA = 'http://127.0.0.1:11434'
 ROOT = Path(__file__).resolve().parent
-DATA = Path(os.environ.get('NEONCLIPPING_DATA_DIR', str(ROOT / 'data')))
+DATA = Path(os.environ.get('LP_CLIPCRAFT_DATA_DIR', str(ROOT / 'data')))
 PRESETS = {
     'groq': {'label': 'Groq (fast, free tier)', 'base_url': 'https://api.groq.com/openai/v1', 'model': 'llama-3.3-70b-versatile'},
-    'openrouter': {'label': 'OpenRouter', 'base_url': 'https://openrouter.ai/api/v1', 'model': 'meta-llama/llama-3.3-70b-instruct'},
+    'openrouter': {'label': 'OpenRouter', 'base_url': 'https://openrouter.ai/api/v1', 'model': 'meta-llama/llama-3.3-70b-instruct:free'},
     'gemini': {'label': 'Google Gemini', 'base_url': 'https://generativelanguage.googleapis.com/v1beta/openai', 'model': 'gemini-2.5-flash'},
     'openai': {'label': 'OpenAI', 'base_url': 'https://api.openai.com/v1', 'model': 'gpt-4o-mini'},
     'lmstudio': {'label': 'LM Studio on this PC', 'base_url': 'http://127.0.0.1:1234/v1', 'model': ''},
@@ -25,7 +25,7 @@ PRESETS = {
 
 
 def _path():
-    return Path(os.environ.get('NEONCLIPPING_DATA_DIR', str(DATA))) / 'llm.json'
+    return Path(os.environ.get('LP_CLIPCRAFT_DATA_DIR', str(DATA))) / 'llm.json'
 
 
 def valid_base_url(value):
@@ -48,10 +48,10 @@ def _read():
         cfg = json.loads(_path().read_text(encoding='utf-8'))
     except (OSError, ValueError):
         pass
-    env_url = os.environ.get('NEONCLIPPING_LLM_BASE_URL')
+    env_url = os.environ.get('LP_CLIPCRAFT_LLM_BASE_URL')
     if env_url:
-        cfg = {**cfg, 'enabled': True, 'base_url': env_url, 'model': os.environ.get('NEONCLIPPING_LLM_MODEL') or cfg.get('model', ''),
-               'api_key': os.environ.get('NEONCLIPPING_LLM_KEY') or cfg.get('api_key', '')}
+        cfg = {**cfg, 'enabled': True, 'base_url': env_url, 'model': os.environ.get('LP_CLIPCRAFT_LLM_MODEL') or cfg.get('model', ''),
+               'api_key': os.environ.get('LP_CLIPCRAFT_LLM_KEY') or cfg.get('api_key', '')}
     return cfg if isinstance(cfg, dict) else {}
 
 

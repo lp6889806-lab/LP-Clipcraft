@@ -1,10 +1,10 @@
 """Builds guide.html (then print to PDF with headless Chrome).
-Keeps the agent prompt in sync with ../NEONCLIPPING-AGENT-SETUP-PROMPT.txt. Styles live in style.css next to this file."""
+Keeps the agent prompt in sync with ../LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt. Styles live in style.css next to this file."""
 import html
 from pathlib import Path
 
 here = Path(__file__).parent
-prompt = (here.parent / 'NEONCLIPPING-AGENT-SETUP-PROMPT.txt').read_text(encoding='utf-8').strip()
+prompt = (here.parent / 'LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt').read_text(encoding='utf-8').strip()
 css = (here / 'style.css').read_text(encoding='utf-8')
 GH = 'github.com/iamajmeena/lp-clipcraft'
 
@@ -72,7 +72,7 @@ pages.append(f'''<section class="page"><h2><span class="n">02</span>Set up in on
 cut = prompt.index('STEP 4.')
 prompt_a, prompt_b = prompt[:cut].rstrip(), prompt[cut:]
 pages.append(f'''<section class="page"><h2><span class="n">03</span>The prompt, part 1 <span class="hi sub">· यह prompt कॉपी करो (1/2)</span></h2>
-<p class="lead">Copy everything in both boxes (this page and the next) and paste it into your AI agent. <span class="hi">दोनों पन्नों का पूरा टेक्स्ट कॉपी करके अपने AI agent में पेस्ट करो। वही फ़ाइल GitHub पर भी है: docs/NEONCLIPPING-AGENT-SETUP-PROMPT.txt</span></p>
+<p class="lead">Copy everything in both boxes (this page and the next) and paste it into your AI agent. <span class="hi">दोनों पन्नों का पूरा टेक्स्ट कॉपी करके अपने AI agent में पेस्ट करो। वही फ़ाइल GitHub पर भी है: docs/LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt</span></p>
 <pre class="pr">{html.escape(prompt_a)}</pre>
 {foot("3")}</section>''')
 pages.append(f'''<section class="page"><h2><span class="n">03</span>The prompt, part 2 <span class="hi sub">· prompt (2/2)</span></h2>

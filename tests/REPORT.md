@@ -342,7 +342,7 @@ Generated 2026-11-20 09:47 by tests/make_report.py from tests/report.json.
 | PASS | install.ps1 into an empty folder from local source (-Yes -SkipOptional -NoShortcut -NoStart) | exit 0, 78 s, "imports ok" |
 | PASS | installed copy starts via Start-LP Clipcraft.bat on port 8791 | /healthz, /library, / (12 KB), /layouts (11) all OK; stopped cleanly |
 | PASS | install.ps1 is ASCII only and parses with the PowerShell parser | 13 KB, 0 parse errors |
-| PASS | installer writes Start-LP Clipcraft-Phone.bat (sets NEONCLIPPING_LAN=1) and a second shortcut; still ASCII and parses | real install into a scratch folder, exit 0 |
+| PASS | installer writes Start-LP Clipcraft-Phone.bat (sets LP_CLIPCRAFT_LAN=1) and a second shortcut; still ASCII and parses | real install into a scratch folder, exit 0 |
 
 ## Unit tests  (2/2)
 
@@ -359,7 +359,7 @@ Generated 2026-11-20 09:47 by tests/make_report.py from tests/report.json.
 | PASS | https://iamajmeena.github.io/lp-clipcraft/ has title, download button, demo video |  |
 | PASS | link https://github.com/iamajmeena/lp-clipcraft | 200 |
 | PASS | link https://github.com/iamajmeena/lp-clipcraft/releases/latest/download/LP-Clipcraft-Setup.bat | 200 |
-| PASS | link https://iamajmeena.github.io/lp-clipcraft/NEONCLIPPING-AGENT-SETUP-PROMPT.txt | 200 |
+| PASS | link https://iamajmeena.github.io/lp-clipcraft/LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt | 200 |
 | PASS | link https://iamajmeena.github.io/lp-clipcraft/LP Clipcraft-Guide-EN-HI.pdf | 200 |
 | PASS | link https://iamajmeena.github.io/lp-clipcraft/demo-poster.jpg | 200 |
 | PASS | link https://iamajmeena.github.io/lp-clipcraft/demo.mp4 | 200 |
@@ -369,7 +369,7 @@ Generated 2026-11-20 09:47 by tests/make_report.py from tests/report.json.
 | PASS | https://editorsgurukul.com/lp-clipcraft/ loads | 200 19960 bytes |
 | PASS | https://editorsgurukul.com/lp-clipcraft/ has title, download button, demo video |  |
 | PASS | link https://editorsgurukul.com/ | 200 |
-| PASS | link https://editorsgurukul.com/lp-clipcraft/NEONCLIPPING-AGENT-SETUP-PROMPT.txt | 200 |
+| PASS | link https://editorsgurukul.com/lp-clipcraft/LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt | 200 |
 | PASS | link https://editorsgurukul.com/lp-clipcraft/LP Clipcraft-Guide-EN-HI.pdf | 200 |
 | PASS | link https://editorsgurukul.com/lp-clipcraft/demo-poster.jpg | 200 |
 | PASS | link https://editorsgurukul.com/lp-clipcraft/demo.mp4 | 200 |
@@ -380,11 +380,11 @@ Generated 2026-11-20 09:47 by tests/make_report.py from tests/report.json.
 | PASS | link https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d873017920 | 200 |
 | PASS | https://editorsgurukul.com/lp-clipcraft/ no leftover github.io / edtrust names |  |
 | PASS | both site copies carry the same content (only the back link and line endings differ) | 19446 vs 19880 bytes |
-| PASS | release asset LP-Clipcraft-Setup.bat | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
-| PASS | release asset install.ps1 | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
-| PASS | release asset install.sh | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
-| PASS | release asset LP Clipcraft-Guide-EN-HI.pdf | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
-| PASS | release asset NEONCLIPPING-AGENT-SETUP-PROMPT.txt | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
+| PASS | release asset LP-Clipcraft-Setup.bat | ['LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
+| PASS | release asset install.ps1 | ['LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
+| PASS | release asset install.sh | ['LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
+| PASS | release asset LP Clipcraft-Guide-EN-HI.pdf | ['LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
+| PASS | release asset LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt | ['LP_CLIPCRAFT-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
 | PASS | one-click download URL resolves | 200 |
 | PASS | raw install.ps1 reachable (the .bat downloads it when run alone) | 200 |
 | PASS | install.ps1 is ASCII only (no encoding surprises in PowerShell 5.1) |  |

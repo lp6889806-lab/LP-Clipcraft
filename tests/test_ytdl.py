@@ -6,9 +6,9 @@ from pathlib import Path
 from unittest import mock
 
 _tmp = tempfile.TemporaryDirectory()
-os.environ['NEONCLIPPING_NO_AUTOUPDATE'] = '1'          # tests must never pip-install anything
-os.environ['NEONCLIPPING_DATA_DIR'] = _tmp.name
-for _k in ('NEONCLIPPING_COOKIES_BROWSER', 'NEONCLIPPING_COOKIES_FILE'):
+os.environ['LP_CLIPCRAFT_NO_AUTOUPDATE'] = '1'          # tests must never pip-install anything
+os.environ['LP_CLIPCRAFT_DATA_DIR'] = _tmp.name
+for _k in ('LP_CLIPCRAFT_COOKIES_BROWSER', 'LP_CLIPCRAFT_COOKIES_FILE'):
     os.environ.pop(_k, None)
 import ytdl
 
@@ -78,7 +78,7 @@ class Variants(unittest.TestCase):
         self.assertGreaterEqual(len(v), 4)                     # plus alternative player clients
 
     def test_browser_cookies_only_when_asked(self):
-        with mock.patch.dict(os.environ, {'NEONCLIPPING_COOKIES_BROWSER': 'Chrome'}):
+        with mock.patch.dict(os.environ, {'LP_CLIPCRAFT_COOKIES_BROWSER': 'Chrome'}):
             v = ytdl.variants({})
         self.assertEqual(v[0][0]['cookiesfrombrowser'], ('chrome',))
         self.assertFalse(v[0][1])
@@ -86,7 +86,7 @@ class Variants(unittest.TestCase):
     def test_cookie_file_is_used_when_present(self):
         f = Path(_tmp.name) / 'cookies.txt'
         f.write_text('# Netscape HTTP Cookie File\n', encoding='utf-8')
-        with mock.patch.dict(os.environ, {'NEONCLIPPING_COOKIES_FILE': str(f)}):
+        with mock.patch.dict(os.environ, {'LP_CLIPCRAFT_COOKIES_FILE': str(f)}):
             v = ytdl.variants({})
         self.assertEqual(v[0][0]['cookiefile'], str(f))
 
@@ -112,7 +112,7 @@ class Ladder(unittest.TestCase):
         with self.assertRaises(RuntimeError) as c:
             ytdl.YDL({}).download(['u'])
         self.assertIn('Upload video', str(c.exception))
-        self.assertIn('NEONCLIPPING_COOKIES_BROWSER', str(c.exception))
+        self.assertIn('LP_CLIPCRAFT_COOKIES_BROWSER', str(c.exception))
         self.assertNotIn('--cookies-from-browser', str(c.exception))
 
     def test_normal_error_is_not_retried(self):
@@ -127,7 +127,7 @@ class Ladder(unittest.TestCase):
                 raise Exception('could not copy Chrome cookie database')
             return {'title': 'ok'}
         FakeYT.rule = staticmethod(rule)
-        with mock.patch.dict(os.environ, {'NEONCLIPPING_COOKIES_BROWSER': 'chrome'}):
+        with mock.patch.dict(os.environ, {'LP_CLIPCRAFT_COOKIES_BROWSER': 'chrome'}):
             self.assertEqual(ytdl.YDL({}).extract_info('u', download=False), {'title': 'ok'})
 
     def test_works_as_context_manager(self):
@@ -140,7 +140,7 @@ class Update(unittest.TestCase):
     def test_not_checked_again_within_a_day(self):
         stamp = Path(_tmp.name) / '.ytdlp_checked'
         stamp.write_text('x', encoding='utf-8')
-        with mock.patch.dict(os.environ, {'NEONCLIPPING_NO_AUTOUPDATE': ''}), \
+        with mock.patch.dict(os.environ, {'LP_CLIPCRAFT_NO_AUTOUPDATE': ''}), \
              mock.patch.object(ytdl.subprocess, 'run') as run:
             self.assertFalse(ytdl.update_ytdlp())
             run.assert_not_called()
@@ -150,7 +150,7 @@ class Update(unittest.TestCase):
         stamp.write_text('x', encoding='utf-8')
         old = time.time() - 3 * 24 * 3600
         os.utime(stamp, (old, old))
-        with mock.patch.dict(os.environ, {'NEONCLIPPING_NO_AUTOUPDATE': ''}), \
+        with mock.patch.dict(os.environ, {'LP_CLIPCRAFT_NO_AUTOUPDATE': ''}), \
              mock.patch.object(ytdl.subprocess, 'run', return_value=mock.Mock(returncode=0)) as run:
             self.assertTrue(ytdl.update_ytdlp())
             self.assertIn('yt-dlp[default]', run.call_args[0][0])

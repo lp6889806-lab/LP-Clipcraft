@@ -45,9 +45,9 @@ class LlmTests(unittest.TestCase):
 
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
-        self.old = {k: os.environ.get(k) for k in ('NEONCLIPPING_DATA_DIR', 'NEONCLIPPING_LLM_BASE_URL')}
-        os.environ['NEONCLIPPING_DATA_DIR'] = self.tmp.name
-        os.environ.pop('NEONCLIPPING_LLM_BASE_URL', None)
+        self.old = {k: os.environ.get(k) for k in ('LP_CLIPCRAFT_DATA_DIR', 'LP_CLIPCRAFT_LLM_BASE_URL')}
+        os.environ['LP_CLIPCRAFT_DATA_DIR'] = self.tmp.name
+        os.environ.pop('LP_CLIPCRAFT_LLM_BASE_URL', None)
         Mock.log.clear()
         Mock.script = [answer('{"ok": true}')]
         llm.save(True, f'http://127.0.0.1:{self.port}/v1', 'test-model', 'sk-SECRET-123')
@@ -134,13 +134,13 @@ class LlmTests(unittest.TestCase):
 
     def test_env_variables_switch_it_on(self):
         llm.save(False, None, None)
-        os.environ['NEONCLIPPING_LLM_BASE_URL'] = f'http://127.0.0.1:{self.port}/v1'
-        os.environ['NEONCLIPPING_LLM_MODEL'] = 'env-model'
+        os.environ['LP_CLIPCRAFT_LLM_BASE_URL'] = f'http://127.0.0.1:{self.port}/v1'
+        os.environ['LP_CLIPCRAFT_LLM_MODEL'] = 'env-model'
         try:
             self.assertEqual(llm.model_name(), 'cloud:env-model')
         finally:
-            os.environ.pop('NEONCLIPPING_LLM_BASE_URL', None)
-            os.environ.pop('NEONCLIPPING_LLM_MODEL', None)
+            os.environ.pop('LP_CLIPCRAFT_LLM_BASE_URL', None)
+            os.environ.pop('LP_CLIPCRAFT_LLM_MODEL', None)
 
 
 if __name__ == '__main__':

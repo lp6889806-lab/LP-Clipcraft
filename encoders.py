@@ -2,7 +2,7 @@
 
 Order: NVENC (NVIDIA GPU) -> AMF (AMD GPU) -> QSV (Intel GPU) -> VideoToolbox (Mac) -> libx264 (any CPU). Each hardware encoder is used only if ffmpeg lists it AND a tiny test
 encode succeeds, so a Mac or a PC without an NVIDIA card goes straight to the right one with no failed first attempt.
-Override with NEONCLIPPING_ENCODER = nvenc | amf | qsv | videotoolbox | x264 | auto (default).
+Override with LP_CLIPCRAFT_ENCODER = nvenc | amf | qsv | videotoolbox | x264 | auto (default).
 The functions return lists of ffmpeg argument lists, best first; callers keep the old pattern "try each until one works".
 """
 from functools import lru_cache
@@ -35,7 +35,7 @@ def works(name):
 
 def h264(cq=20, x264_preset='fast', nv_preset='p5', vt_bitrate='14M'):
     """Encoder argument lists to try in order. The last one (libx264) always exists."""
-    pick = os.environ.get('NEONCLIPPING_ENCODER', 'auto').strip().lower()
+    pick = os.environ.get('LP_CLIPCRAFT_ENCODER', 'auto').strip().lower()
     options = {
         'nvenc': ['-c:v', 'h264_nvenc', '-preset', nv_preset, '-cq', str(cq)],
         'amf': ['-c:v', 'h264_amf', '-quality', 'quality', '-rc', 'cqp', '-qp_i', str(cq), '-qp_p', str(cq)],

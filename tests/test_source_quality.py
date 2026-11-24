@@ -1,7 +1,7 @@
 import os
 import unittest
 
-os.environ['NEONCLIPPING_NO_AUTOUPDATE'] = '1'
+os.environ['LP_CLIPCRAFT_NO_AUTOUPDATE'] = '1'
 from standalone import source_height, source_format, quality_label, DEFAULT_SOURCE_HEIGHT
 
 
