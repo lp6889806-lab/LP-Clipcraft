@@ -40,7 +40,7 @@ class PhoneGate(unittest.TestCase):
 
     def test_phone_without_pin_is_refused_but_can_load_the_page(self):
         self.assertEqual(self.phone.get('/m').status_code, 200)
-        self.assertIn('NeonClipping', self.phone.get('/m').text)
+        self.assertIn('LP Clipcraft', self.phone.get('/m').text)
         for p in PHONE_ROUTES + ('/media/abc', '/make/abc'):
             self.assertEqual(self.phone.get(p).status_code, 401, p)
 

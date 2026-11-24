@@ -1,4 +1,4 @@
-# NeonClipping test report
+# LP Clipcraft test report
 
 Generated 2026-11-20 09:47 by tests/make_report.py from tests/report.json.
 
@@ -340,9 +340,9 @@ Generated 2026-11-20 09:47 by tests/make_report.py from tests/report.json.
 | Result | Check | Evidence |
 |---|---|---|
 | PASS | install.ps1 into an empty folder from local source (-Yes -SkipOptional -NoShortcut -NoStart) | exit 0, 78 s, "imports ok" |
-| PASS | installed copy starts via Start-NeonClipping.bat on port 8791 | /healthz, /library, / (12 KB), /layouts (11) all OK; stopped cleanly |
+| PASS | installed copy starts via Start-LP Clipcraft.bat on port 8791 | /healthz, /library, / (12 KB), /layouts (11) all OK; stopped cleanly |
 | PASS | install.ps1 is ASCII only and parses with the PowerShell parser | 13 KB, 0 parse errors |
-| PASS | installer writes Start-NeonClipping-Phone.bat (sets NEONCLIPPING_LAN=1) and a second shortcut; still ASCII and parses | real install into a scratch folder, exit 0 |
+| PASS | installer writes Start-LP Clipcraft-Phone.bat (sets NEONCLIPPING_LAN=1) and a second shortcut; still ASCII and parses | real install into a scratch folder, exit 0 |
 
 ## Unit tests  (2/2)
 
@@ -355,42 +355,42 @@ Generated 2026-11-20 09:47 by tests/make_report.py from tests/report.json.
 
 | Result | Check | Evidence |
 |---|---|---|
-| PASS | https://iamajmeena.github.io/neonclipping/ loads | 200 19525 bytes |
-| PASS | https://iamajmeena.github.io/neonclipping/ has title, download button, demo video |  |
-| PASS | link https://github.com/iamajmeena/neonclipping | 200 |
-| PASS | link https://github.com/iamajmeena/neonclipping/releases/latest/download/NeonClipping-Setup.bat | 200 |
-| PASS | link https://iamajmeena.github.io/neonclipping/NEONCLIPPING-AGENT-SETUP-PROMPT.txt | 200 |
-| PASS | link https://iamajmeena.github.io/neonclipping/NeonClipping-Guide-EN-HI.pdf | 200 |
-| PASS | link https://iamajmeena.github.io/neonclipping/demo-poster.jpg | 200 |
-| PASS | link https://iamajmeena.github.io/neonclipping/demo.mp4 | 200 |
-| PASS | link https://iamajmeena.github.io/neonclipping/neonclipping-ui.jpg | 200 |
+| PASS | https://iamajmeena.github.io/lp-clipcraft/ loads | 200 19525 bytes |
+| PASS | https://iamajmeena.github.io/lp-clipcraft/ has title, download button, demo video |  |
+| PASS | link https://github.com/iamajmeena/lp-clipcraft | 200 |
+| PASS | link https://github.com/iamajmeena/lp-clipcraft/releases/latest/download/LP-Clipcraft-Setup.bat | 200 |
+| PASS | link https://iamajmeena.github.io/lp-clipcraft/NEONCLIPPING-AGENT-SETUP-PROMPT.txt | 200 |
+| PASS | link https://iamajmeena.github.io/lp-clipcraft/LP Clipcraft-Guide-EN-HI.pdf | 200 |
+| PASS | link https://iamajmeena.github.io/lp-clipcraft/demo-poster.jpg | 200 |
+| PASS | link https://iamajmeena.github.io/lp-clipcraft/demo.mp4 | 200 |
+| PASS | link https://iamajmeena.github.io/lp-clipcraft/lp-clipcraft-ui.jpg | 200 |
 | PASS | link https://rzp.io/rzp/JN41CpW | 200 |
-| PASS | https://iamajmeena.github.io/neonclipping/ no leftover github.io / edtrust names |  |
-| PASS | https://editorsgurukul.com/neonclipping/ loads | 200 19960 bytes |
-| PASS | https://editorsgurukul.com/neonclipping/ has title, download button, demo video |  |
+| PASS | https://iamajmeena.github.io/lp-clipcraft/ no leftover github.io / edtrust names |  |
+| PASS | https://editorsgurukul.com/lp-clipcraft/ loads | 200 19960 bytes |
+| PASS | https://editorsgurukul.com/lp-clipcraft/ has title, download button, demo video |  |
 | PASS | link https://editorsgurukul.com/ | 200 |
-| PASS | link https://editorsgurukul.com/neonclipping/NEONCLIPPING-AGENT-SETUP-PROMPT.txt | 200 |
-| PASS | link https://editorsgurukul.com/neonclipping/NeonClipping-Guide-EN-HI.pdf | 200 |
-| PASS | link https://editorsgurukul.com/neonclipping/demo-poster.jpg | 200 |
-| PASS | link https://editorsgurukul.com/neonclipping/demo.mp4 | 200 |
-| PASS | link https://editorsgurukul.com/neonclipping/neonclipping-ui.jpg | 200 |
-| PASS | link https://github.com/iamajmeena/neonclipping | 200 |
-| PASS | link https://github.com/iamajmeena/neonclipping/releases/latest/download/NeonClipping-Setup.bat | 200 |
+| PASS | link https://editorsgurukul.com/lp-clipcraft/NEONCLIPPING-AGENT-SETUP-PROMPT.txt | 200 |
+| PASS | link https://editorsgurukul.com/lp-clipcraft/LP Clipcraft-Guide-EN-HI.pdf | 200 |
+| PASS | link https://editorsgurukul.com/lp-clipcraft/demo-poster.jpg | 200 |
+| PASS | link https://editorsgurukul.com/lp-clipcraft/demo.mp4 | 200 |
+| PASS | link https://editorsgurukul.com/lp-clipcraft/lp-clipcraft-ui.jpg | 200 |
+| PASS | link https://github.com/iamajmeena/lp-clipcraft | 200 |
+| PASS | link https://github.com/iamajmeena/lp-clipcraft/releases/latest/download/LP-Clipcraft-Setup.bat | 200 |
 | PASS | link https://rzp.io/rzp/JN41CpW | 200 |
 | PASS | link https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d873017920 | 200 |
-| PASS | https://editorsgurukul.com/neonclipping/ no leftover github.io / edtrust names |  |
+| PASS | https://editorsgurukul.com/lp-clipcraft/ no leftover github.io / edtrust names |  |
 | PASS | both site copies carry the same content (only the back link and line endings differ) | 19446 vs 19880 bytes |
-| PASS | release asset NeonClipping-Setup.bat | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'NeonClipping-Guide-EN-HI.pdf', 'NeonClipping-Setup.bat', 'install.ps1', 'install.sh'] |
-| PASS | release asset install.ps1 | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'NeonClipping-Guide-EN-HI.pdf', 'NeonClipping-Setup.bat', 'install.ps1', 'install.sh'] |
-| PASS | release asset install.sh | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'NeonClipping-Guide-EN-HI.pdf', 'NeonClipping-Setup.bat', 'install.ps1', 'install.sh'] |
-| PASS | release asset NeonClipping-Guide-EN-HI.pdf | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'NeonClipping-Guide-EN-HI.pdf', 'NeonClipping-Setup.bat', 'install.ps1', 'install.sh'] |
-| PASS | release asset NEONCLIPPING-AGENT-SETUP-PROMPT.txt | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'NeonClipping-Guide-EN-HI.pdf', 'NeonClipping-Setup.bat', 'install.ps1', 'install.sh'] |
+| PASS | release asset LP-Clipcraft-Setup.bat | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
+| PASS | release asset install.ps1 | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
+| PASS | release asset install.sh | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
+| PASS | release asset LP Clipcraft-Guide-EN-HI.pdf | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
+| PASS | release asset NEONCLIPPING-AGENT-SETUP-PROMPT.txt | ['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh'] |
 | PASS | one-click download URL resolves | 200 |
 | PASS | raw install.ps1 reachable (the .bat downloads it when run alone) | 200 |
 | PASS | install.ps1 is ASCII only (no encoding surprises in PowerShell 5.1) |  |
 | PASS | guide PDF is a PDF with pages | 963080 |
 | PASS | agent prompt has the 9 steps + simple-Hindi explanation + stop rules | 8091 |
-| PASS | https://editorsgurukul.com/free-resources lists NeonClipping | 200 |
-| PASS | https://editorsgurukul.com/free-websites/ lists NeonClipping | 200 |
-| PASS | https://editorsgurukul.com/free-websites/neonclipping/ lists NeonClipping | 200 |
-| PASS | sitemap lists /neonclipping/ |  |
+| PASS | https://editorsgurukul.com/free-resources lists LP Clipcraft | 200 |
+| PASS | https://editorsgurukul.com/free-websites/ lists LP Clipcraft | 200 |
+| PASS | https://editorsgurukul.com/free-websites/lp-clipcraft/ lists LP Clipcraft | 200 |
+| PASS | sitemap lists /lp-clipcraft/ |  |

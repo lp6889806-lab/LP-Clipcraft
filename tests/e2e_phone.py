@@ -1,5 +1,5 @@
 """Phone remote end to end, over this PC's real Wi-Fi address (so the server sees a non-loopback client, like a phone).
-Starts its own NeonClipping on port 8792 with NEONCLIPPING_LAN=1 and its own data folder, tests the gate, then runs live
+Starts its own LP Clipcraft on port 8792 with NEONCLIPPING_LAN=1 and its own data folder, tests the gate, then runs live
 clipping the way the phone page does (needs a Twitch channel that is live; that part is skipped, and says so, when none is)."""
 import http.client
 import json
@@ -69,7 +69,7 @@ def run():
         pin = status['pin']
         R.check(G, 'server is reachable on the Wi-Fi address (listens on 0.0.0.0 in phone mode)', lambda: (phone.call('GET', '/m', raw=True)[0] == 200, host))
         R.check(G, 'PC status shows the Wi-Fi URL and a 6-digit PIN', lambda: (status['enabled'] and len(pin) == 6 and any(host in u for u in status['urls']), status['urls']))
-        R.check(G, 'phone page loads without the PIN', lambda: (b'NeonClipping' in phone.call('GET', '/m', raw=True)[1], ''))
+        R.check(G, 'phone page loads without the PIN', lambda: (b'LP Clipcraft' in phone.call('GET', '/m', raw=True)[1], ''))
         for path in ('/library', '/live-active', '/creators', '/media/x', '/make/x'):
             R.check(G, f'phone without PIN: GET {path} -> 401', lambda path=path: (phone.call('GET', path)[0] == 401, ''))
         R.check(G, 'phone cannot read /phone/status (PIN stays on the PC)', lambda: (phone.call('GET', '/phone/status')[0] in (401, 403), ''))
@@ -129,7 +129,7 @@ def run():
             Remote(host).call('POST', '/m/login', {'pin': '111111'})
         R.check(G, 'after 5 wrong PINs the address is locked, even for the right PIN', lambda: (Remote(host).call('POST', '/m/login', {'pin': pin})[0] == 429, ''))
     finally:
-        # kill the test server AND its recorder children only (never other NeonClipping sessions on this PC)
+        # kill the test server AND its recorder children only (never other LP Clipcraft sessions on this PC)
         subprocess.run(['taskkill', '/F', '/T', '/PID', str(proc.pid)], capture_output=True)
         time.sleep(1)
         tmp.cleanup()

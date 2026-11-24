@@ -11,7 +11,7 @@ titles = {'static': 'Page, API and input validation', 'export': 'Rendering: 11 l
           'edit': 'Editing saved clips (one / all clips of a video)', 'make': 'Make clips: sources, modes, languages, errors',
           'live': 'Live clipping on a real stream', 'phone': 'Phone remote over the real Wi-Fi address: PIN gate, PC-only routes, live clipping from the phone', 'creators': 'Creator list', 'feedback': 'Star ratings and learning',
           'style': 'Style extras: templates, background card, watermark, credit, outro, music', 'features': 'Caption animations, SRT/ASS import, facecam finder, AI parts, Make with moments', 'ui': 'Browser UI', 'installer': 'One-click installer', 'unit': 'Unit tests', 'site': 'Website, links, release, editorsgurukul'}
-out = [f'# NeonClipping test report\n', f'Generated {time.strftime("%Y-%m-%d %H:%M")} by tests/make_report.py from tests/report.json.\n']
+out = [f'# LP Clipcraft test report\n', f'Generated {time.strftime("%Y-%m-%d %H:%M")} by tests/make_report.py from tests/report.json.\n']
 total = len(rows)
 ok = sum(1 for r in rows if r['ok'])
 out.append(f'**{ok} of {total} checks pass.**\n')

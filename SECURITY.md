@@ -1,6 +1,6 @@
 # Security policy
 
-NeonClipping runs on your own computer. It does not upload your videos anywhere.
+LP Clipcraft runs on your own computer. It does not upload your videos anywhere.
 
 ## Reporting a vulnerability
 
@@ -9,7 +9,7 @@ Please do not post exploit details in a public issue.
 1. Open the repository's **Security** tab and choose **Report a vulnerability** (GitHub private advisory), or
 2. If that is not available to you, open a public issue that only says "security report" (no details) and the maintainer will arrange a private channel.
 
-You can expect a first reply within a few days. Fixes ship on the `main` branch; re-run `NeonClipping-Setup.bat` (or `git pull`) to update.
+You can expect a first reply within a few days. Fixes ship on the `main` branch; re-run `LP-Clipcraft-Setup.bat` (or `git pull`) to update.
 
 ## Supported version
 

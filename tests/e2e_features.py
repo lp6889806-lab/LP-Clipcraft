@@ -103,7 +103,7 @@ def run():
 
     # ---- Make with moments, auto facecam, credit, template
     moments = [{'start': 8, 'end': 48, 'title': 'First pick', 'hook': 'first pick'}, {'start': 70, 'end': 112, 'title': 'Second pick', 'hook': 'second pick'}]
-    s, why = make(url=YT_SHORT + '&x=e2efeat', moments=moments, count=2, minlen=20, maxlen=60, credit_auto=True, template='x_dark', tpl_name='NeonClipping', tpl_handle='iamajmeena', cam_auto=True)
+    s, why = make(url=YT_SHORT + '&x=e2efeat', moments=moments, count=2, minlen=20, maxlen=60, credit_auto=True, template='x_dark', tpl_name='LP Clipcraft', tpl_handle='iamajmeena', cam_auto=True)
 
     def mk_check():
         if s is None or s['status'] != 'done':

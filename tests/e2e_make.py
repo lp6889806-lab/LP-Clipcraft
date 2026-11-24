@@ -1,4 +1,4 @@
-"""Heavy group of the NeonClipping test matrix: real downloads, transcription and rendering through /make.
+"""Heavy group of the LP Clipcraft test matrix: real downloads, transcription and rendering through /make.
 
     python tests/e2e_make.py            # everything
     python tests/e2e_make.py errors     # only the quick error-handling cases

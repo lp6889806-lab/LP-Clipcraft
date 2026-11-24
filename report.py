@@ -13,7 +13,7 @@ import json, os, platform, re, subprocess, sys, time, urllib.parse, urllib.reque
 
 ROOT = Path(__file__).resolve().parent
 DATA = Path(os.environ.get('NEONCLIPPING_DATA_DIR', str(ROOT / 'data')))
-REPO = 'iamajmeena/neonclipping'
+REPO = 'iamajmeena/lp-clipcraft'
 DEFAULT_REPORT_URL = ''            # set after deploying tools/report-worker (or use NEONCLIPPING_REPORT_URL / data/report.json)
 LOG_MAX = 200_000                  # bytes; the log is trimmed to its newest half when it grows past this
 SEND_MAX = 24_000                  # characters sent in a direct report
@@ -130,7 +130,7 @@ def environment():
 def diagnostics(note='', errors=8):
     """The exact text the user sees and shares. Redacted again here so nothing slips through."""
     env = environment()
-    lines = ['NeonClipping diagnostics (links, user names, e-mails and IPs removed)', '']
+    lines = ['LP Clipcraft diagnostics (links, user names, e-mails and IPs removed)', '']
     lines += [f'{k}: {redact(v)}' for k, v in env.items()]
     errs = recent_errors(errors)
     lines += ['', f'recent errors ({len(errs)}):']
@@ -170,7 +170,7 @@ def send(note=''):
         return False, 'Direct sending is not set up in this build. Use the GitHub issue or the download option.'
     payload = json.dumps({'text': diagnostics(note)[:SEND_MAX], 'sent': time.strftime('%Y-%m-%d'),
                           'kinds': sorted({e.get('kind') for e in recent_errors(20) if e.get('kind')})}).encode('utf-8')
-    req = urllib.request.Request(url, data=payload, headers={'Content-Type': 'application/json', 'User-Agent': 'NeonClipping-report'})
+    req = urllib.request.Request(url, data=payload, headers={'Content-Type': 'application/json', 'User-Agent': 'LP Clipcraft-report'})
     try:
         with urllib.request.urlopen(req, timeout=10) as r:
             return (200 <= r.status < 300), ('Sent. Thank you!' if 200 <= r.status < 300 else f'The collector answered {r.status}.')

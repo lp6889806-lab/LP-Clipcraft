@@ -106,7 +106,7 @@
  },
  {
   "group": "installer",
-  "name": "installed copy starts via Start-NeonClipping.bat on port 8791",
+  "name": "installed copy starts via Start-LP Clipcraft.bat on port 8791",
   "ok": true,
   "evidence": "/healthz, /library, / (12 KB), /layouts (11) all OK; stopped cleanly",
   "sec": 0
@@ -1198,63 +1198,63 @@
  },
  {
   "group": "site",
-  "name": "https://iamajmeena.github.io/neonclipping/ loads",
+  "name": "https://iamajmeena.github.io/lp-clipcraft/ loads",
   "ok": true,
   "evidence": "200 19525 bytes",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "https://iamajmeena.github.io/neonclipping/ has title, download button, demo video",
+  "name": "https://iamajmeena.github.io/lp-clipcraft/ has title, download button, demo video",
   "ok": true,
   "evidence": "",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://github.com/iamajmeena/neonclipping",
+  "name": "link https://github.com/iamajmeena/lp-clipcraft",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://github.com/iamajmeena/neonclipping/releases/latest/download/NeonClipping-Setup.bat",
+  "name": "link https://github.com/iamajmeena/lp-clipcraft/releases/latest/download/LP-Clipcraft-Setup.bat",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://iamajmeena.github.io/neonclipping/NEONCLIPPING-AGENT-SETUP-PROMPT.txt",
+  "name": "link https://iamajmeena.github.io/lp-clipcraft/NEONCLIPPING-AGENT-SETUP-PROMPT.txt",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://iamajmeena.github.io/neonclipping/NeonClipping-Guide-EN-HI.pdf",
+  "name": "link https://iamajmeena.github.io/lp-clipcraft/LP Clipcraft-Guide-EN-HI.pdf",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://iamajmeena.github.io/neonclipping/demo-poster.jpg",
+  "name": "link https://iamajmeena.github.io/lp-clipcraft/demo-poster.jpg",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://iamajmeena.github.io/neonclipping/demo.mp4",
+  "name": "link https://iamajmeena.github.io/lp-clipcraft/demo.mp4",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://iamajmeena.github.io/neonclipping/neonclipping-ui.jpg",
+  "name": "link https://iamajmeena.github.io/lp-clipcraft/lp-clipcraft-ui.jpg",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
@@ -1268,21 +1268,21 @@
  },
  {
   "group": "site",
-  "name": "https://iamajmeena.github.io/neonclipping/ no leftover github.io / edtrust names",
+  "name": "https://iamajmeena.github.io/lp-clipcraft/ no leftover github.io / edtrust names",
   "ok": true,
   "evidence": "",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "https://editorsgurukul.com/neonclipping/ loads",
+  "name": "https://editorsgurukul.com/lp-clipcraft/ loads",
   "ok": true,
   "evidence": "200 19960 bytes",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "https://editorsgurukul.com/neonclipping/ has title, download button, demo video",
+  "name": "https://editorsgurukul.com/lp-clipcraft/ has title, download button, demo video",
   "ok": true,
   "evidence": "",
   "sec": 0.0
@@ -1296,49 +1296,49 @@
  },
  {
   "group": "site",
-  "name": "link https://editorsgurukul.com/neonclipping/NEONCLIPPING-AGENT-SETUP-PROMPT.txt",
+  "name": "link https://editorsgurukul.com/lp-clipcraft/NEONCLIPPING-AGENT-SETUP-PROMPT.txt",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://editorsgurukul.com/neonclipping/NeonClipping-Guide-EN-HI.pdf",
+  "name": "link https://editorsgurukul.com/lp-clipcraft/LP Clipcraft-Guide-EN-HI.pdf",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://editorsgurukul.com/neonclipping/demo-poster.jpg",
+  "name": "link https://editorsgurukul.com/lp-clipcraft/demo-poster.jpg",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://editorsgurukul.com/neonclipping/demo.mp4",
+  "name": "link https://editorsgurukul.com/lp-clipcraft/demo.mp4",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://editorsgurukul.com/neonclipping/neonclipping-ui.jpg",
+  "name": "link https://editorsgurukul.com/lp-clipcraft/lp-clipcraft-ui.jpg",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://github.com/iamajmeena/neonclipping",
+  "name": "link https://github.com/iamajmeena/lp-clipcraft",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "link https://github.com/iamajmeena/neonclipping/releases/latest/download/NeonClipping-Setup.bat",
+  "name": "link https://github.com/iamajmeena/lp-clipcraft/releases/latest/download/LP-Clipcraft-Setup.bat",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
@@ -1359,7 +1359,7 @@
  },
  {
   "group": "site",
-  "name": "https://editorsgurukul.com/neonclipping/ no leftover github.io / edtrust names",
+  "name": "https://editorsgurukul.com/lp-clipcraft/ no leftover github.io / edtrust names",
   "ok": true,
   "evidence": "",
   "sec": 0.0
@@ -1373,37 +1373,37 @@
  },
  {
   "group": "site",
-  "name": "release asset NeonClipping-Setup.bat",
+  "name": "release asset LP-Clipcraft-Setup.bat",
   "ok": true,
-  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'NeonClipping-Guide-EN-HI.pdf', 'NeonClipping-Setup.bat', 'install.ps1', 'install.sh']",
+  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
   "sec": 0.0
  },
  {
   "group": "site",
   "name": "release asset install.ps1",
   "ok": true,
-  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'NeonClipping-Guide-EN-HI.pdf', 'NeonClipping-Setup.bat', 'install.ps1', 'install.sh']",
+  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
   "sec": 0.0
  },
  {
   "group": "site",
   "name": "release asset install.sh",
   "ok": true,
-  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'NeonClipping-Guide-EN-HI.pdf', 'NeonClipping-Setup.bat', 'install.ps1', 'install.sh']",
+  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "release asset NeonClipping-Guide-EN-HI.pdf",
+  "name": "release asset LP Clipcraft-Guide-EN-HI.pdf",
   "ok": true,
-  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'NeonClipping-Guide-EN-HI.pdf', 'NeonClipping-Setup.bat', 'install.ps1', 'install.sh']",
+  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
   "sec": 0.0
  },
  {
   "group": "site",
   "name": "release asset NEONCLIPPING-AGENT-SETUP-PROMPT.txt",
   "ok": true,
-  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'NeonClipping-Guide-EN-HI.pdf', 'NeonClipping-Setup.bat', 'install.ps1', 'install.sh']",
+  "evidence": "['NEONCLIPPING-AGENT-SETUP-PROMPT.txt', 'LP Clipcraft-Guide-EN-HI.pdf', 'LP-Clipcraft-Setup.bat', 'install.ps1', 'install.sh']",
   "sec": 0.0
  },
  {
@@ -1443,28 +1443,28 @@
  },
  {
   "group": "site",
-  "name": "https://editorsgurukul.com/free-resources lists NeonClipping",
+  "name": "https://editorsgurukul.com/free-resources lists LP Clipcraft",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "https://editorsgurukul.com/free-websites/ lists NeonClipping",
+  "name": "https://editorsgurukul.com/free-websites/ lists LP Clipcraft",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "https://editorsgurukul.com/free-websites/neonclipping/ lists NeonClipping",
+  "name": "https://editorsgurukul.com/free-websites/lp-clipcraft/ lists LP Clipcraft",
   "ok": true,
   "evidence": "200",
   "sec": 0.0
  },
  {
   "group": "site",
-  "name": "sitemap lists /neonclipping/",
+  "name": "sitemap lists /lp-clipcraft/",
   "ok": true,
   "evidence": "",
   "sec": 0.0
@@ -1968,7 +1968,7 @@
  },
  {
   "group": "installer",
-  "name": "installer writes Start-NeonClipping-Phone.bat (sets NEONCLIPPING_LAN=1) and a second shortcut; still ASCII and parses",
+  "name": "installer writes Start-LP Clipcraft-Phone.bat (sets NEONCLIPPING_LAN=1) and a second shortcut; still ASCII and parses",
   "ok": true,
   "evidence": "real install into a scratch folder, exit 0",
   "sec": 0

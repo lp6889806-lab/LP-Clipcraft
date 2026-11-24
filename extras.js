@@ -1,4 +1,4 @@
-// NeonClipping extras: style panel, caption animation, SRT/ASS import, facecam finder, AI parts.
+// LP Clipcraft extras: style panel, caption animation, SRT/ASS import, facecam finder, AI parts.
 // Loaded after app.js. It only adds to the page and wraps request()/exportSettings()/openSavedClip(); app.js stays as it is.
 (function () {
   const $ = id => document.getElementById(id);
@@ -232,7 +232,7 @@
       try {
         const p = await baseRequest('/phone/status');
         if (!p.enabled) {
-          phoneBox.innerHTML = '📱 <b>Phone access is off.</b> To control live clipping and watch clips on your phone, close NeonClipping and start it with the <b>NeonClipping (phone access)</b> shortcut. Windows may ask once to allow it on private networks: choose Allow.';
+          phoneBox.innerHTML = '📱 <b>Phone access is off.</b> To control live clipping and watch clips on your phone, close LP Clipcraft and start it with the <b>LP Clipcraft (phone access)</b> shortcut. Windows may ask once to allow it on private networks: choose Allow.';
         } else {
           const urls = p.urls.length ? p.urls.map(u => '<b>' + u + '</b>').join(' or ') : '(no Wi-Fi address found)';
           phoneBox.innerHTML = '📱 <b>Phone access is on.</b> On a phone connected to the same Wi-Fi open ' + urls + ' and enter the PIN <b style="color:var(--lime);font-size:18px;letter-spacing:.1em">' + p.pin + '</b> <button class="secondary" id="phone-newpin" style="margin-left:8px;padding:4px 10px">New PIN</button>' +

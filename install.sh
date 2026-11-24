@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# NeonClipping installer for macOS and Linux.
+# LP Clipcraft installer for macOS and Linux.
 # Checked automatically on macOS and Ubuntu machines (GitHub Actions: Actions tab). The maintainer has not run it on his own Mac yet.
 # Needs: python3 (3.10+), ffmpeg, curl, unzip. It does not install system packages for you: it tells you what is missing.
-# Everything goes into ~/NeonClipping. Delete that folder to uninstall.
+# Everything goes into ~/LP Clipcraft. Delete that folder to uninstall.
 set -e
-DIR="${NEONCLIPPING_DIR:-$HOME/NeonClipping}"
-ZIP="${NEONCLIPPING_ZIP:-https://github.com/iamajmeena/neonclipping/archive/refs/heads/main.zip}"
+DIR="${NEONCLIPPING_DIR:-$HOME/LP Clipcraft}"
+ZIP="${NEONCLIPPING_ZIP:-https://github.com/iamajmeena/lp-clipcraft/archive/refs/heads/main.zip}"
 say() { printf '\n==> %s\n' "$1"; }
 need() { command -v "$1" >/dev/null 2>&1 || { echo "Missing: $1. $2"; MISSING=1; }; }
 
@@ -23,7 +23,7 @@ for c in python3.12 python3.11 python3.13 python3.10 python3; do
   if command -v "$c" >/dev/null 2>&1 && "$c" -c 'import sys; sys.exit(0 if (3, 10) <= sys.version_info[:2] <= (3, 13) else 1)' 2>/dev/null; then PY="$c"; break; fi
 done
 if [ -z "$PY" ]; then
-  echo "Your Python is $(python3 --version 2>&1). NeonClipping needs Python 3.10 to 3.13 (newer versions are not supported by all packages yet)."
+  echo "Your Python is $(python3 --version 2>&1). LP Clipcraft needs Python 3.10 to 3.13 (newer versions are not supported by all packages yet)."
   echo "Install one:  macOS: brew install python@3.12     Ubuntu: sudo apt install python3.12 python3.12-venv"
   echo "Then run this installer again."
   exit 1
@@ -31,12 +31,12 @@ fi
 "$PY" -c "import venv" 2>/dev/null || { echo "Missing the venv module (Ubuntu: sudo apt install python3-venv)."; exit 1; }
 echo "OK: $($PY --version), $(ffmpeg -version | head -1 | cut -c1-30)"
 
-say "Step 2/4 - Downloading NeonClipping"
+say "Step 2/4 - Downloading LP Clipcraft"
 TMP="$(mktemp -d)"
 curl -fsSL "$ZIP" -o "$TMP/nc.zip"
 unzip -q "$TMP/nc.zip" -d "$TMP"
 mkdir -p "$DIR/app"
-cp -R "$TMP"/neonclipping-*/. "$DIR/app/"
+cp -R "$TMP"/lp-clipcraft-*/. "$DIR/app/"
 rm -rf "$TMP"
 
 say "Step 3/4 - Installing packages (3-6 minutes)"
@@ -58,7 +58,7 @@ chmod +x "$DIR/start.sh"
 
 echo
 echo "SETUP COMPLETE."
-echo "Start NeonClipping:  $DIR/start.sh    (then open http://127.0.0.1:8770)"
+echo "Start LP Clipcraft:  $DIR/start.sh    (then open http://127.0.0.1:8770)"
 echo "Use: 1) paste a video link  2) press 'Make clips'  3) preview and 'Download MP4'."
 echo "Optional: install Ollama (ollama.com) and run 'ollama pull llama3.2:3b' for AI titles."
 [ "${NEONCLIPPING_NO_START:-0}" = "1" ] && exit 0    # used by the automatic check: install only

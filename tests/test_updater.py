@@ -13,7 +13,7 @@ def fake_zip(files):
     buf = io.BytesIO()
     with zipfile.ZipFile(buf, 'w') as z:
         for name, text in files.items():
-            z.writestr('neonclipping-main/' + name, text)
+            z.writestr('lp-clipcraft-main/' + name, text)
     return buf.getvalue()
 
 

@@ -12,7 +12,7 @@ def stub_av():
     import sys, types
     stub = types.ModuleType('av')
     def _unavailable(*a, **k):
-        raise RuntimeError('PyAV is blocked or missing on this computer; NeonClipping decodes audio with FFmpeg instead.')
+        raise RuntimeError('PyAV is blocked or missing on this computer; LP Clipcraft decodes audio with FFmpeg instead.')
     stub.open = _unavailable
     stub.__neon_stub__ = True
     sys.modules['av'] = stub

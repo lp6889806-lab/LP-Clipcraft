@@ -121,7 +121,7 @@ def _chat(cfg, prompt, budget, temperature, json_mode, timeout=60):
     body = {'model': cfg['model'], 'messages': [{'role': 'user', 'content': prompt}], 'temperature': temperature, 'max_tokens': int(budget)}
     if json_mode:
         body['response_format'] = {'type': 'json_object'}
-    headers = {'Content-Type': 'application/json', 'User-Agent': 'NeonClipping'}
+    headers = {'Content-Type': 'application/json', 'User-Agent': 'LP Clipcraft'}
     if cfg['api_key']:
         headers['Authorization'] = 'Bearer ' + cfg['api_key']
     req = urllib.request.Request(cfg['base_url'] + '/chat/completions', json.dumps(body).encode(), headers)

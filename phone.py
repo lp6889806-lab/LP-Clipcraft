@@ -118,7 +118,7 @@ def attach(app, data, root):
     def manifest():
         return JSONResponse(
             {
-                'name': 'NeonClipping',
+                'name': 'LP Clipcraft',
                 'short_name': 'NeonClip',
                 'start_url': '/m',
                 'scope': '/',

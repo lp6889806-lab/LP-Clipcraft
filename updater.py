@@ -1,4 +1,4 @@
-"""In-app updates from GitHub, so people who already installed NeonClipping get new versions without running the installer again.
+"""In-app updates from GitHub, so people who already installed LP Clipcraft get new versions without running the installer again.
 
 How it works
   * The installed version is the commit id in `.neon_version` (written by the installer and by this updater). A git checkout is
@@ -12,7 +12,7 @@ Everything here is user-triggered from the page; nothing is sent to GitHub excep
 from pathlib import Path
 import io, os, shutil, subprocess, sys, threading, time, urllib.request, zipfile
 
-REPO = 'iamajmeena/neonclipping'
+REPO = 'iamajmeena/lp-clipcraft'
 API = f'https://api.github.com/repos/{REPO}/commits/main'
 ZIP = f'https://codeload.github.com/{REPO}/zip/refs/heads/main'
 KEEP = {'data', 'models', '.venv', 'venv', 'cache', '__pycache__', '.git', '.update-backup', '.neon_version', 'server.log',
@@ -24,7 +24,7 @@ _latest = {'sha': '', 'at': 0.0}
 
 
 def _request(url, timeout=10, accept=None):
-    req = urllib.request.Request(url, headers={'User-Agent': 'NeonClipping-updater', **({'Accept': accept} if accept else {})})
+    req = urllib.request.Request(url, headers={'User-Agent': 'LP Clipcraft-updater', **({'Accept': accept} if accept else {})})
     return urllib.request.urlopen(req, timeout=timeout)
 
 
@@ -84,7 +84,7 @@ def _install(root, sha):
         names = z.namelist()
         prefix = names[0].split('/')[0] + '/'
         if prefix + 'app.py' not in names:
-            raise RuntimeError('The download does not look like NeonClipping (app.py missing).')
+            raise RuntimeError('The download does not look like LP Clipcraft (app.py missing).')
         _set(stage='Installing files...')
         backup = root / '.update-backup'
         if backup.exists():
@@ -110,7 +110,7 @@ def _install(root, sha):
         if r.returncode:
             raise RuntimeError('Packages could not be installed: ' + (r.stderr or r.stdout)[-300:])
     (root / '.neon_version').write_text(sha, encoding='utf-8')
-    _set(stage='Restarting NeonClipping...', done=True)
+    _set(stage='Restarting LP Clipcraft...', done=True)
 
 
 def restart(root):

@@ -6,8 +6,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        **Tip:** open NeonClipping, press **Report a problem · समस्या बताएँ** (bottom-left) and choose option 1. It pre-fills the boxes below and removes links, user names, e-mails and IPs.
-        **टिप:** NeonClipping में नीचे बाएँ **Report a problem** दबाएँ और विकल्प 1 चुनें। नीचे के खाने अपने आप भर जाते हैं और लिंक, यूज़र नाम, ई-मेल, IP हट जाते हैं।
+        **Tip:** open LP Clipcraft, press **Report a problem · समस्या बताएँ** (bottom-left) and choose option 1. It pre-fills the boxes below and removes links, user names, e-mails and IPs.
+        **टिप:** LP Clipcraft में नीचे बाएँ **Report a problem** दबाएँ और विकल्प 1 चुनें। नीचे के खाने अपने आप भर जाते हैं और लिंक, यूज़र नाम, ई-मेल, IP हट जाते हैं।
   - type: textarea
     id: what
     attributes:

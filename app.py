@@ -76,7 +76,7 @@ def text_file(id:str,kind:str):
  if not id.isalnum() or kind not in ('srt','ass','vtt'):raise HTTPException(404)
  p=DATA/(id+'.'+kind)
  if not p.exists():raise HTTPException(404)
- return FileResponse(p,filename='neonclipping-'+id+'.'+kind)
+ return FileResponse(p,filename='lp-clipcraft-'+id+'.'+kind)
 @app.get('/library')
 def library():
  records=[]
@@ -86,7 +86,7 @@ def library():
   try:
    j=json.loads(f.read_text());result=j.get('result',{})
    if result.get('status')=='done' and not j.get('superseded_by') and (DATA/(f.stem+'.mp4')).exists():
-    records.append({'id':f.stem,'title':j.get('settings',{}).get('title') or 'NeonClipping clip','created':f.stat().st_mtime,'meta':result.get('meta',{}),'settings':j.get('settings',{}),'srt':bool(result.get('srt')) and (DATA/(f.stem+'.srt')).exists(),**app.reedit_metadata(f.stem,j,groups)})
+    records.append({'id':f.stem,'title':j.get('settings',{}).get('title') or 'LP Clipcraft clip','created':f.stat().st_mtime,'meta':result.get('meta',{}),'settings':j.get('settings',{}),'srt':bool(result.get('srt')) and (DATA/(f.stem+'.srt')).exists(),**app.reedit_metadata(f.stem,j,groups)})
   except (ValueError,OSError):pass
  return sorted(records,key=lambda j:j['created'],reverse=True)
 
@@ -592,7 +592,7 @@ def report_info(note:str=''):
 @app.get('/report/download')
 def report_download(note:str=''):
  from fastapi.responses import PlainTextResponse
- return PlainTextResponse(report.diagnostics(note,errors=40),headers={'Content-Disposition':'attachment; filename="neonclipping-diagnostics.txt"'})
+ return PlainTextResponse(report.diagnostics(note,errors=40),headers={'Content-Disposition':'attachment; filename="lp-clipcraft-diagnostics.txt"'})
 @app.post('/report/send')
 def report_send(b:dict):
  if b.get('consent') is not True:raise HTTPException(400,'Tick the box to allow sending first.')
@@ -604,16 +604,16 @@ def report_log(b:dict):
  report.log_error(str(b.get('stage') or 'page')[:80],str(b.get('error') or '')[:700]);return {'ok':True}
 @app.get('/readiness')
 def readiness():
- """One-line health of everything NeonClipping needs, each with a plain fix, shown at the top of the page."""
+ """One-line health of everything LP Clipcraft needs, each with a plain fix, shown at the top of the page."""
  import compat,ytdl,encoders,smart
  items=[]
  def add(key,label,ok,detail,fix=''):items.append({'key':key,'label':label,'ok':bool(ok),'detail':detail,'fix':fix})
- add('ffmpeg','FFmpeg',compat.ffmpeg_ready(),'found' if compat.ffmpeg_ready() else 'not found','Run NeonClipping-Setup.bat again, or install it with: winget install Gyan.FFmpeg')
+ add('ffmpeg','FFmpeg',compat.ffmpeg_ready(),'found' if compat.ffmpeg_ready() else 'not found','Run LP-Clipcraft-Setup.bat again, or install it with: winget install Gyan.FFmpeg')
  try:enc=encoders.describe()
  except Exception:enc='libx264'
  add('encoder','Encoder',True,{'h264_nvenc':'NVIDIA GPU','h264_amf':'AMD GPU','h264_qsv':'Intel GPU','h264_videotoolbox':'Apple GPU'}.get(enc,'CPU'))
  runtimes=sorted(ytdl.js_runtimes())
- add('youtube','YouTube',bool(runtimes),'JS runtime: '+', '.join(runtimes) if runtimes else 'no JS runtime','Install Deno (winget install DenoLand.Deno) so YouTube shows every quality, then restart NeonClipping.')
+ add('youtube','YouTube',bool(runtimes),'JS runtime: '+', '.join(runtimes) if runtimes else 'no JS runtime','Install Deno (winget install DenoLand.Deno) so YouTube shows every quality, then restart LP Clipcraft.')
  model=smart._model(False)
  add('ai','AI model',bool(model),(model[6:]+' (cloud)') if model and model.startswith('cloud:') else (model or 'Ollama not running (optional)'),'Optional: install Ollama and run: ollama pull llama3.2:3b for smarter titles and moment picking.')
  try:free=shutil.disk_usage(DATA).free/1024**3

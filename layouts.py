@@ -1,4 +1,4 @@
-"""NeonClipping's native layout geometry, shared by browser preview and FFmpeg."""
+"""LP Clipcraft's native layout geometry, shared by browser preview and FFmpeg."""
 import math
 
 CATALOG = [

@@ -3,7 +3,7 @@ read the chatbot's answers back as moments, and hand them to Make clips (which t
 
 Why: a chatbot that is given a 9-hour transcript in one go only really reads the beginning. Twenty parts of ~25 minutes
 are small enough to be read properly. Works with any chatbot (Gemini, ChatGPT, Claude, ...): the text is copied by hand,
-nothing is sent anywhere by NeonClipping. The transcript comes from the video's own YouTube captions.
+nothing is sent anywhere by LP Clipcraft. The transcript comes from the video's own YouTube captions.
 """
 import json
 import math

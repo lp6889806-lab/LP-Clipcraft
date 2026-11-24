@@ -1,4 +1,4 @@
-"""NeonClipping end-to-end test matrix. Runs against the live server (default http://127.0.0.1:8770).
+"""LP Clipcraft end-to-end test matrix. Runs against the live server (default http://127.0.0.1:8770).
 
     python tests/e2e.py static export edit feedback creators   # pick groups, or no argument = all light groups
     python tests/e2e.py make                                   # heavy: real downloads + transcription
